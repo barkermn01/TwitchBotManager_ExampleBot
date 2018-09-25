@@ -1,0 +1,9 @@
+{
+    "name":"Test Plugin",   
+    "description":"This is a test plugin to test the plugin system of TwitchBot",
+    "version":"1.0.0",
+    "lisence":"GPL",
+    "requires":{
+    },
+    "init":"TestPlugin"
+}
