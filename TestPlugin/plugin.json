@@ -5,5 +5,19 @@
     "lisence":"GPL",
     "requires":{
     },
+    "injection":{
+        "Web":{
+            "Hosting":"registerWebHandlers",
+            "MenuRegister":"registerWebNavHandler"
+        },
+        "Store":{
+            "Register":"connectToStore"
+        },
+        "TwitchChat":{
+            "Command":"registerTwitchCommandHandler",
+            "AllMessages":"registerTwitchMessageHandler",
+            "SendMessage":"registerTwitchChatTrigger"
+        }
+    },
     "init":"TestPlugin"
 }

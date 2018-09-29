@@ -6,11 +6,15 @@ function TestPlugin(accessors){
     this.registerWebHandlers = (WebServerHandlerRegistration) => {
         WebServerHandlerRegistration(new RegExp("\/test\/.*"), () => {
             return new Promise((resolve, reject) =>{
-                resolve({
-                    "status":200,
-                    "content-type":"application/json",
-                    "content":JSON.stringify({"test":"test"})
-                })
+                try{
+                    resolve({
+                        "status":200,
+                        "content-type":"application/json",
+                        "content":JSON.stringify({"test":"test"})
+                    })
+                }catch(err){
+                    reject(err);
+                }
             })
         });
     }
@@ -42,9 +46,13 @@ function TestPlugin(accessors){
 
     /* handle automated messaging to twitch */
     this.registerTwitchChatTrigger = (writer) => {
-        setInterval(() => {
+        /*setInterval(() => {
             writer("Why not try the echo system using !echo");
-        }, 1000)
+        }, 1000)*/
+    }
+
+    this.registerWebNavHandler = (registerMenuLink) => {
+        registerMenuLink("/test/index");
     }
 
     /* handle reading all messages */
