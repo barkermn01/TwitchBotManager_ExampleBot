@@ -1,5 +1,5 @@
 function TestPlugin(accessors){
-    let state;
+    let savedState;
     let lastMessage = false;
 
     /* Allow for the /test/.* endpoints to be handled */
@@ -9,8 +9,8 @@ function TestPlugin(accessors){
                 try{
                     resolve({
                         "status":200,
-                        "content-type":"application/json",
-                        "content":JSON.stringify({"test":"test"})
+                        "headers":{"content-type":"application/json"},
+                        "body":JSON.stringify({"test":"test"})
                     })
                 }catch(err){
                     reject(err);
@@ -20,8 +20,8 @@ function TestPlugin(accessors){
     }
 
     /* Allow this application to store state */
-    this.connectToStore = (store) => {
-        state = store;
+    this.getState = (state) => {
+        savedState = state;
     }
 
     /* handle twich commands */
@@ -47,7 +47,7 @@ function TestPlugin(accessors){
     /* handle automated messaging to twitch */
     this.registerTwitchChatTrigger = (writer) => {
         /*setInterval(() => {
-            writer("Why not try the echo system using !echo");
+            writer("Why not try the echo system using !echo", "hobbit");
         }, 1000)*/
     }
 

@@ -10,8 +10,8 @@
             "Hosting":"registerWebHandlers",
             "MenuRegister":"registerWebNavHandler"
         },
-        "Store":{
-            "Register":"connectToStore"
+        "State":{
+            "Get":"getState"
         },
         "TwitchChat":{
             "Command":"registerTwitchCommandHandler",
@@ -19,5 +19,8 @@
             "SendMessage":"registerTwitchChatTrigger"
         }
     },
-    "init":"TestPlugin"
+    "plugin":{
+        "file":"TestPlugin",
+        "method":"init"
+    }
 }
